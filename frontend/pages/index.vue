@@ -1,42 +1,66 @@
 <template>
-  <div>
+  <div class="container mx-auto">
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-background"></div>
-      <div class="container mx-auto text-center hero-content">
-        <h1 class="text-5xl font-bold text-white mb-4">Jonjo.io</h1>
-        <p class="text-lg text-white">
-          Explore the latest articles and stay updated with our insights.
-        </p>
+    <section class="bg-white dark:bg-gray-900">
+      <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div class="mr-auto place-self-center lg:col-span-7">
+          <h1
+            class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+            Where Innovation Meets Entertainment
+          </h1>
+          <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+            From AI insights to coding adventures and game design thrills, dive into the tech-savvy universe with
+            Jonjo.io. Simplifying the complexities of technology, one byte at a time!
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+            Blog
+            <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <a
+            href="#"
+            class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+            Learn
+            <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <a
+            href="#"
+            class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+            About Me
+          </a>
+        </div>
+        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+          <img class="rounded-lg" src="/images/hero_0063.png" alt="mockup" />
+        </div>
       </div>
     </section>
 
-    <!-- Latest Articles Section -->
-    <section class="latest-articles py-12 bg-gray-100">
-      <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-        <h2
-          class="text-4xl font-bold mb-8 text-center text-teal-600 col-span-2"
-        >
-          Latest Articles
-        </h2>
-
-        <!-- Article Cards -->
+    <section class="mt-8 max-w-screen-xl">
+      <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">Latest Posts</h4>
+      <div class="grid grid-cols-4 gap-3">
         <div
           v-for="article in articles"
           :key="article.id"
-          class="article-card p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300"
-        >
-          <h2 class="text-2xl font-semibold text-teal-600">
-            {{ article.attributes.title }}
-          </h2>
-          <p class="text-gray-600">{{ article.attributes.date }}</p>
-          <p class="mt-4 text-gray-800">{{ article.attributes.description }}</p>
-          <router-link
-            :to="{ name: 'article', params: { slug: article.attributes.slug } }"
-            class="text-teal-500 hover:underline mt-4 inline-block"
-          >
-            Read more
-          </router-link>
+          class="bg-white rounded overflow-hidden shadow-md transition duration-300 relative">
+          <img class="w-full h-50 sm:h-80 object-cover" src="/images/hero_0063.png" alt="" />
+          <div class="m-4">
+            <span>{{ article.attributes.title }}</span>
+            <span class="block text-gray-500 text-sm">{{ article.attributes.date }}</span>
+            <div class="bg-slate-300 text-xs uppercase font-bold rounded-full p-2 absolute top-0 mt-2">
+              <span>{{ article.attributes.date }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -44,7 +68,7 @@
 </template>
 
 <script>
-import { allArticlesQuery } from "~/graphql/queries";
+import { allArticlesQuery } from '~/graphql/queries';
 
 export default {
   data() {
@@ -58,40 +82,10 @@ export default {
       prefetch: true,
       query: allArticlesQuery,
       update: (data) => data.articles.data,
-      loadingKey: "loading",
+      loadingKey: 'loading',
     },
   },
 };
 </script>
 
-<style scoped>
-/* Hero Section Styles */
-.hero {
-  position: relative;
-  height: 400px; /* Adjust the height as needed */
-  margin-top: 0; /* Updated to start at the top of the screen */
-  background: url("/images/poster2_0004.png") center/cover no-repeat;
-}
-
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
-}
-
-.hero h1 {
-  margin-top: 150px; /* Adjust the vertical alignment of text */
-}
-
-/* Article Card Styles */
-.article-card {
-  transition: transform 0.3s ease;
-}
-
-.article-card:hover {
-  transform: translateY(-5px);
-}
-</style>
+<style scoped></style>
