@@ -3,18 +3,15 @@
     <div class="mx-auto max-w-screen-xl">
       <!-- Hero Section -->
       <section class="dark:bg-gray-900">
-        <div
-          class="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
+        <div class="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
           <div class="mr-auto place-self-center lg:col-span-7">
             <h1
               class="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight text-gray-100 md:text-5xl xl:text-6xl">
               Where Innovation Meets Entertainment
             </h1>
-            <p
-              class="mb-6 max-w-2xl font-light text-gray-200 md:text-lg lg:mb-8 lg:text-xl">
-              From AI insights to coding adventures and game design thrills, dive into the
-              tech-savvy universe with Jonjo.io. Simplifying the complexities of
-              technology, one byte at a time!
+            <p class="mb-6 max-w-2xl font-light text-gray-200 md:text-lg lg:mb-8 lg:text-xl">
+              From AI insights to coding adventures and game design thrills, dive into the tech-savvy universe
+              with Jonjo.io. Simplifying the complexities of technology, one byte at a time!
             </p>
             <a
               href="#"
@@ -57,57 +54,8 @@
           </div>
         </div>
       </section>
-
-      <section class="mt-6">
-        <h4 class="border-gray-200 pb-2 text-4xl font-bold text-gray-100">
-          Latest Posts
-        </h4>
-        <div class="relative grid grid-cols-4 gap-3">
-          <div
-            v-for="article in articles"
-            :key="article.id"
-            class="overflow-hidden rounded bg-white shadow-xl">
-            <img
-              class="h-50 w-full object-cover sm:h-80"
-              src="/images/hero_0063.png"
-              alt="" />
-            <div class="m-4">
-              <span class="text-xl text-orange-400">{{ article.attributes.title }}</span>
-              <span class="block text-sm text-gray-500">{{
-                article.attributes.description
-              }}</span>
-              <div
-                class="absolute top-0 mt-2 rounded-full bg-slate-300 p-2 text-xs font-bold uppercase">
-                <span>{{ article.attributes.date }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="mt-16">
-        <h4 class="border-gray-200 pb-2 text-4xl font-bold text-gray-100">
-          Latest Tutorials
-        </h4>
-        <div class="grid grid-cols-6 gap-3">
-          <div
-            v-for="article in articles"
-            :key="article.id"
-            class="relative overflow-hidden rounded bg-white shadow-xl">
-            <img class="h-30 w-full object-cover" src="/images/hero_0063.png" alt="" />
-            <div class="m-4">
-              <span>{{ article.attributes.title }}</span>
-              <span class="block text-sm text-gray-500">{{
-                article.attributes.date
-              }}</span>
-              <div
-                class="absolute top-0 mt-2 rounded-full bg-slate-300 p-2 text-xs font-bold uppercase">
-                <span>{{ article.attributes.date }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BlogCards />
+      <TutorialCards />
     </div>
   </div>
 </template>
